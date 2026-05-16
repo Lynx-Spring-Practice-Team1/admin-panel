@@ -172,8 +172,8 @@ function SidebarContent({ page, navigate, onClose }) {
           <button
             key={item.id}
             className={`w-full flex items-center gap-4 p-2 rounded-xl transition-all border ${page === item.id
-                ? 'bg-[#ebdbd3] dark:bg-[#3d2e26] border-[#d9774a] text-black dark:text-gray-100 font-bold'
-                : 'border-transparent text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800'
+              ? 'bg-[#ebdbd3] dark:bg-[#3d2e26] border-[#d9774a] text-black dark:text-gray-100 font-bold'
+              : 'border-transparent text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800'
               }`}
             onClick={() => { navigate(item.id); onClose?.(); }}
           >
