@@ -3,7 +3,7 @@ import secrets
 
 import httpx
 from fastapi import Depends, FastAPI, HTTPException, Query, Request, Response, status
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from itsdangerous import BadSignature, SignatureExpired, URLSafeTimedSerializer
 from pydantic import BaseModel, Field
@@ -332,8 +332,16 @@ if STATIC_DIR.exists():
     app.mount("/admin/assets", StaticFiles(directory=STATIC_DIR / "assets"), name="admin-assets")
 
 
+@app.get("/")
+@app.head("/")
+async def root_redirect():
+    return RedirectResponse(url="/admin")
+
+
 @app.get("/admin")
 @app.get("/admin/{path:path}")
+@app.head("/admin")
+@app.head("/admin/{path:path}")
 async def admin_ui(path: str = ""):
     index_file = STATIC_DIR / "index.html"
     if not index_file.exists():
