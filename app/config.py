@@ -15,6 +15,11 @@ class Settings(BaseSettings):
     wallet_service_url: str = "http://wallet-service:8003"
     portfolio_service_url: str = "http://portfolio-service:8004"
     market_notifications_url: str = "http://market-notifications:8005"
+    bot_service_url: str = "http://bot-service:8000"
+
+    # Kafka — bot.activity.* relay
+    kafka_bootstrap_servers: str = "redpanda:9092"
+    kafka_enabled: bool = True
 
 
 settings = Settings()
